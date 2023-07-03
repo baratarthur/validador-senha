@@ -1,0 +1,15 @@
+<div class="input">
+    <input [id]="id"
+        [type]="type"
+        [placeholder]="placeholder"
+        [formControl]="formControl"/>
+    <div *ngIf="useFeedback"
+        class="input__feedback">
+        <div class="input__feedback--success">
+            <ng-content select="[success]"/>
+        </div>
+        <div class="input__feedback--error">
+            <ng-content select="[error]"/>
+        </div>
+    </div>
+</div>

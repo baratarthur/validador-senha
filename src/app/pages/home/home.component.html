@@ -1,0 +1,60 @@
+<form class="form" [formGroup]="form" (submit)="submitData($event)">
+    <div class="form__inputs">
+        <h1>Valide sua senha</h1>
+        <app-input id="name"
+            type="text"
+            placeholder="Nome"
+            formControlName="name"/>
+        <app-input id="email"
+            type="email"
+            placeholder="Email"
+            formControlName="email"/>
+        <app-input id="password"
+            type="text"
+            placeholder="Senha"
+            formControlName="password"
+            [useFeedback]="true">
+            <div success
+                *ngIf="password?.valid"
+                class="form__input-group__password--valid">
+                <p>Senha válida!</p>
+            </div>
+            <div error
+                *ngIf="password?.invalid && password?.dirty"
+                class="form__input-group__password--invalid">
+                <p>Senha Inválida</p>
+                <ul>
+                    <li *ngIf="password?.errors?.['minlength']"
+                        id="min-length-error-message">
+                        Senha deve conter 6 dígitos
+                    </li>
+                    <li *ngIf="password?.errors?.['dontHasTwoNumbers']"
+                        id="two-digits-error-message">
+                        Senha deve conter 2 dígitos adjacentes iguais
+                    </li>
+                    <li *ngIf="password?.errors?.['dontHasCrescentDigits']"
+                        id="asc-sequence-error-message">
+                        Senha deve conter dígitos numa sequência crescente ou de mesmo valor
+                    </li>
+                    <li *ngIf="password?.errors?.['dontIsBetweenInterval']"
+                        id="range-error-message">
+                        Senha deve estar entre os números 184759 e 856920
+                    </li>
+                </ul>
+            </div>
+        </app-input>
+    </div>
+    <div class="form__actions">
+        <p *ngIf="submitSuccess" class="form__actions--success">
+            Resultado enviado com sucesso!
+        </p>
+        <p *ngIf="submitSuccess !== undefined && !submitSuccess"
+            class="form__actions--error">
+            Falha ao enviar resultado. Tente novamente.
+        </p>
+        <button type="submit"
+            [disabled]="form.invalid || passwordValidatorService.loading">
+            Enviar
+        </button>
+    </div>
+</form>

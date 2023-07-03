@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Fisrt steps
 
-Download the project in your computer, open the project folder in your best IDE, then run `npm install` to install all dependencies, then follow to Development server path.
+Download the project in your computer, open the project folder in your best IDE, then run `npm install` to install all dependencies, then follow to Development server step.
 
 ## Development server
 
